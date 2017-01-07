@@ -1,3 +1,4 @@
+student_count = 11
 puts "The Students of Villains Academy"
 puts "------------------------------"
 # list of students
@@ -13,6 +14,4 @@ puts "Agent Smith"
 puts "Saruman"
 puts "Cersei Lannister"
 # student count
-print "Overall, there are "
-print 11
-print " eeeevillllll students"
+puts "There are exactly #{student_count} students."
