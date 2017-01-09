@@ -12,12 +12,22 @@ students = [
   "Saruman",
   "Cersei Lannister"
 ]
-#printed array
+def print_header
 puts "The Students of Villains Academy"
 puts "------------------------------"
-students.each do |student|
-  puts student
 end
-#now for the total
+
+def print(names)
+names.each do |name|
+  puts name
+end
+end
+
+def print_footer(names)
+puts "There are exactly #{names.count} eeeevilll students."
+end
+#now to call methods
+print_header
+print(students)
 puts
-puts "There are exactly #{students.count} eeeevilll students."
+print_footer(students)
