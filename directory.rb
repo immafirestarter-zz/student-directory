@@ -1,3 +1,27 @@
+#method for creating an interactive menu
+def interactive_menu
+students = []
+  loop do
+    puts "1. Input Students"
+    puts "2. Show the list of students"
+    puts "9. Exit"
+    selection = gets.chomp
+case selection
+  when "1"
+    students = student_input
+  when "2"
+    print_header
+    print(students)
+    puts
+    print_footer(students)
+  when "9"
+    exit
+  else
+    puts "I am sorry, I did not get that, please enter a valid command."
+  end
+  end
+  end
+
 #method for collecting sudent data from using and adding to hash.
 def student_input
 
@@ -33,9 +57,5 @@ end
 def print_footer(students)
 puts "There are exactly #{students.count} eeeevilll students."
 end
-#now to call methods
-students = student_input
-print_header
-print(students)
-puts
-print_footer(students)
+
+interactive_menu
