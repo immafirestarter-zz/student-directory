@@ -33,8 +33,19 @@ def show_students
   print_footer
 end
 #method for collecting sudent data from using and adding to hash.
-def student_input
+def save_file
+  #first need to open file to write data to
+file = File.open("students.csv", "w")
+#iterating over student array
+@students.each do |student|
+  student_data = [student[:name], student[:cohort]]
+  csv_line = student_data.join(",")
+  file.puts csv_line
+end
+file.close
+end
 
+def student_input
   puts "Please enter the names of the enrolling students:"
   puts "To finish, press enter twice"
   #now for the empty array
