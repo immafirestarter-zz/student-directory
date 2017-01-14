@@ -3,7 +3,7 @@
 def interactive_menu
   loop do
     print_menu
-    process(gets.chomp)
+    process(STDIN.gets.chomp)
   end
   end
 
@@ -51,13 +51,27 @@ end
 file.close
 end
 
-def load_file
-  file = File.open("students.csv", "r")
+# Method to load list of students from file from inside the program
+def load_file(filename = "students.csv")
+  file = File.open(filename, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
     @students << {name: name, cohort: cohort.to_sym}
   end
   file.close
+end
+
+#Method to load list of students on start-up
+def try_load_file
+  filename = ARGV.first
+  return if filename.nil?
+  if File.exists?(filename)
+    load_file(filename)
+    puts "Loaded #{@students.count} from #{filename}"
+  else #if file doesnt exists
+    puts "Sorry, #{filename} doesn't exist"
+    exit
+  end
 end
 
 def student_input
@@ -66,14 +80,14 @@ def student_input
   #now for the empty array
   @students = []
   #for first name
-  name = gets.chomp
+  name = STDIN.gets.chomp
   #while name isn't empty, repeat.
   while !name.empty? do
     #now to add student hashe
     @students << {name: name, cohort: :march}
     puts "Now we have #{@students.count} eeeevillll students"
     #gets another name
-    name = gets.chomp
+    name = STDIN.gets.chomp
   end
   #return array
   @students
@@ -94,4 +108,5 @@ def print_footer
 puts "There are exactly #{@students.count} eeeevilll students."
 end
 
+try_load_file
 interactive_menu
