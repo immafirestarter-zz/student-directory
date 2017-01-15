@@ -77,8 +77,6 @@ end
 def student_input
   puts "Please enter the names of the enrolling students:"
   puts "To finish, press enter twice"
-  #now for the empty array
-  @students = []
   #for first name
   name = STDIN.gets.chomp
   #while name isn't empty, repeat.
@@ -89,8 +87,6 @@ def student_input
     #gets another name
     name = STDIN.gets.chomp
   end
-  #return array
-  @students
 end
 
 def print_header
